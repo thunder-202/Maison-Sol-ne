@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAISON SOLÈNE — Bespoke Hair & Botanical Sanctuary</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        alabaster: '#F7F4EF',
+                        linen: '#EFEAE1',
+                        espresso: '#1C1917',
+                        taupe: '#6E655F',
+                        champagne: '#9E7B4F',
+                        'champagne-light': '#C5A375',
+                        hairline: '#DCD4C8',
+                        'hairline-dark': '#443E38'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        'widest-editorial': '0.25em',
+                        'ultra-wide': '0.35em'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Grainy Canvas Overlay for Tactile Depth */
+        .bg-grain {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+        }
+        
+        /* Custom Hairline Borders */
+        .border-hairline {
+            border-color: #DCD4C8;
+        }
+
+        /* Smooth Silk Transition */
+        .transition-silk {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Subtle Hover Underline Effect */
+        .hover-underline-glide {
+            position: relative;
+        }
+        .hover-underline-glide::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #9E7B4F;
+            transition: width 0.3s ease-in-out;
+        }
+        .hover-underline-glide:hover::after {
+            width: 100%;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F7F4EF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #DCD4C8;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9E7B4F;
+        }
+
+        /* Drawer Overlay Backing */
+        .drawer-backdrop {
+            background-color: rgba(28, 25, 23, 0.45);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body class="bg-alabaster text-espresso font-sans antialiased bg-grain selection:bg-champagne selection:text-white">
+
+    <!-- TOP ANNOUNCEMENT / STATUS BAR -->
+    <aside aria-label="Status Bar" class="bg-linen border-b border-hairline py-2 px-4 text-center text-xs tracking-widest text-taupe uppercase font-medium">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-champagne mr-2 align-middle"></span>
+        Accepting Appointments for Autumn / Winter 2026 &bull; Private Suites Available
+    </aside>
+
+    <!-- NAVIGATION HEADER -->
+    <header class="sticky top-0 z-40 bg-alabaster/90 backdrop-blur-md border-b border-hairline transition-silk">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
+            
+            <!-- Mobile Menu Toggle -->
+            <button id="mobileMenuBtn" class="md:hidden p-2 text-espresso hover:text-champagne transition-colors" aria-label="Toggle Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Brand Logo / Wordmark -->
+            <a href="#" class="text-2xl md:text-3xl font-serif tracking-widest font-light text-espresso uppercase flex flex-col">
+                <span>MAISON SOLÈNE</span>
+                <span class="text-[9px] font-sans tracking-ultra-wide text-taupe font-normal uppercase -mt-1">Bespoke Hair & Botanical Sanctuary</span>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-xs uppercase tracking-widest text-taupe font-medium">
+                <a href="#sanctuary" class="hover:text-espresso hover-underline-glide transition-colors py-1">The Sanctuary</a>
+                <a href="#menu" class="hover:text-espresso hover-underline-glide transition-colors py-1">Rituals & Menu</a>
+                <a href="#artisans" class="hover:text-espresso hover-underline-glide transition-colors py-1">Master Artisans</a>
+                <a href="#consultation" class="hover:text-espresso hover-underline-glide transition-colors py-1">Sensory Matcher</a>
+                <a href="#journal" class="hover:text-espresso hover-underline-glide transition-colors py-1">Journal</a>
+            </nav>
+
+            <!-- Reserve Button -->
+            <div class="flex items-center space-x-4">
+                <button onclick="openBookingDrawer()" class="px-5 py-2.5 text-xs uppercase tracking-widest border border-hairline text-espresso hover:bg-espresso hover:text-alabaster hover:border-espresso transition-silk font-medium">
+                    Reserve Chair
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer Overlay -->
+        <div id="mobileNav" class="hidden md:hidden border-b border-hairline bg-alabaster px-6 py-6 space-y-4">
+            <a href="#sanctuary" onclick="toggleMobileNav()" class="block text-sm uppercase tracking-widest text-espresso font-medium py-1">The Sanctuary</a>
+            <a href="#menu" onclick="toggleMobileNav()" class="block text-sm uppercase tracking-widest text-espresso font-medium py-1">Rituals & Menu</a>
+            <a href="#artisans" onclick="toggleMobileNav()" class="block text-sm uppercase tracking-widest text-espresso font-medium py-1">Master Artisans</a>
+            <a href="#consultation" onclick="toggleMobileNav()" class="block text-sm uppercase tracking-widest text-espresso font-medium py-1">Sensory Matcher</a>
+            <a href="#journal" onclick="toggleMobileNav()" class="block text-sm uppercase tracking-widest text-espresso font-medium py-1">Journal</a>
+            <div class="pt-4 border-t border-hairline">
+                <button onclick="toggleMobileNav(); openBookingDrawer();" class="w-full py-3 text-xs uppercase tracking-widest bg-espresso text-alabaster font-medium">
+                    Reserve Private Chair
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION: EDITORIAL SPLIT -->
+        <section class="relative min-h-[calc(100vh-5rem)] flex items-center border-b border-hairline overflow-hidden py-16 lg:py-0">
+            <div class="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                
+                <!-- Left Content Block -->
+                <div class="lg:col-span-7 space-y-8 z-10">
+                    <div class="inline-flex items-center space-x-3 text-xs tracking-widest uppercase text-champagne font-medium">
+                        <span class="w-8 h-px bg-champagne"></span>
+                        <span>Private Hair Suites & Scalp Spa</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif font-light text-espresso leading-[1.08] tracking-tight">
+                        Quiet luxury,<br>
+                        <span class="italic font-normal text-champagne">sculpted strand</span> by strand.
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-taupe font-light max-w-xl leading-relaxed">
+                        An unhurried sanctuary dedicated to bespoke organic coloring, botanical head treatments, and customized architectural hair design. Designed for discerning individuals seeking solitary rest.
+                    </p>
+
+                    <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                        <button onclick="openBookingDrawer()" class="px-8 py-4 bg-espresso text-alabaster text-xs uppercase tracking-widest font-medium hover:bg-champagne transition-silk text-center">
+                            Reserve Private Appointment
+                        </button>
+                        <button onclick="openConsultationModal()" class="px-8 py-4 border border-hairline text-espresso text-xs uppercase tracking-widest font-medium hover:border-champagne hover:text-champagne transition-silk flex items-center justify-center space-x-2">
+                            <span>Take Sensory Matcher</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/></svg>
+                        </button>
+                    </div>
+
+                    <!-- Meta specs bar -->
+                    <div class="pt-8 border-t border-hairline grid grid-cols-3 gap-6 text-left">
+                        <div>
+                            <p class="text-2xl font-serif text-espresso">1:1</p>
+                            <p class="text-[10px] uppercase tracking-widest text-taupe">Private Suite Ratio</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-serif text-espresso">100%</p>
+                            <p class="text-[10px] uppercase tracking-widest text-taupe">Botanical Formulations</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-serif text-espresso">Zero</p>
+                            <p class="text-[10px] uppercase tracking-widest text-taupe">Chemical Ammonia</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Editorial Image Frame -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <!-- Frame outline decoration -->
+                        <div class="absolute -inset-3 border border-hairline pointer-events-none rounded-sm"></div>
+                        
+                        <!-- Main Image -->
+                        <div class="relative overflow-hidden aspect-[4/5] bg-linen shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=1000" 
+                                 alt="Maison Solène Sanctuary Interior" 
+                                 class="w-full h-full object-cover grayscale opacity-95 hover:grayscale-0 hover:scale-105 transition-silk duration-700"
+                                 onerror="this.src='https://placehold.co/800x1000/EFEAE1/1C1917?text=MAISON+SOLÈNE+SANCTUARY';">
+                        </div>
+
+                        <!-- Floating Micro Badge -->
+                        <div class="absolute -bottom-6 -left-6 bg-alabaster p-6 border border-hairline shadow-lg max-w-xs space-y-1">
+                            <p class="text-[10px] uppercase tracking-widest text-champagne font-semibold">Location & Hours</p>
+                            <p class="text-xs font-serif text-espresso font-medium">No. 42 Rue de L'Orangerie, Mayfair</p>
+                            <p class="text-[11px] text-taupe">Tuesday – Saturday &bull; 09:00 – 19:00</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- BRAND PHILOSOPHY / THE SANCTUARY -->
+        <section id="sanctuary" class="py-24 border-b border-hairline bg-linen/50">
+            <div class="max-w-7xl mx-auto px-6 md:px-12">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                    
+                    <!-- Left Pull Quote & Signature -->
+                    <div class="lg:col-span-5 space-y-8">
+                        <span class="text-xs tracking-widest uppercase text-champagne font-semibold">The Sanctuary Code</span>
+                        
+                        <h2 class="text-3xl sm:text-4xl font-serif text-espresso leading-snug font-light italic">
+                            "Hair is an organic silhouette. It should never be forced or compromised by haste."
+                        </h2>
+
+                        <!-- Signature SVG Mockup -->
+                        <div class="space-y-2 pt-2">
+                            <svg class="h-12 text-champagne w-48 opacity-85" viewBox="0 0 200 60" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 40 C 20 10, 40 10, 50 35 C 55 45, 60 50, 70 30 C 80 10, 95 20, 110 35 C 120 45, 135 15, 150 25 C 165 35, 180 20, 190 30" />
+                            </svg>
+                            <p class="text-xs uppercase tracking-widest text-espresso font-medium">Solène Moreau</p>
+                            <p class="text-[11px] text-taupe uppercase tracking-wider">Founder & Creative Director</p>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: 3 Pillars -->
+                    <div class="lg:col-span-7 space-y-10">
+                        <p class="text-base sm:text-lg text-taupe font-light leading-relaxed">
+                            Inside Maison Solène, we rejected the noisy chaos of traditional salons. We designed a tranquil sanctuary built around private single-client suites, bespoke plant-based chemistry, and deep quiet.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-6 border-t border-hairline">
+                            <div class="space-y-3">
+                                <span class="text-xs text-champagne font-serif italic">01</span>
+                                <h3 class="text-sm uppercase tracking-widest text-espresso font-medium">Unhurried Appointments</h3>
+                                <p class="text-xs text-taupe leading-relaxed">We schedule generous time buffers so your stylist's focus is entirely yours.</p>
+                            </div>
+
+                            <div class="space-y-3">
+                                <span class="text-xs text-champagne font-serif italic">02</span>
+                                <h3 class="text-sm uppercase tracking-widest text-espresso font-medium">Botanical Alchemy</h3>
+                                <p class="text-xs text-taupe leading-relaxed">Cold-pressed organic oils, fermented tea rinses, and zero synthetic fragrance.</p>
+                            </div>
+
+                            <div class="space-y-3">
+                                <span class="text-xs text-champagne font-serif italic">03</span>
+                                <h3 class="text-sm uppercase tracking-widest text-espresso font-medium">Bespoke Silhouette</h3>
+                                <p class="text-xs text-taupe leading-relaxed">Precision dry-sculpting tailored to your face geometry and natural hair movement.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SENSORY RITUAL CONSULTATION MATCHER (INTERACTIVE WIDGET) -->
+        <section id="consultation" class="py-20 border-b border-hairline bg-alabaster">
+            <div class="max-w-5xl mx-auto px-6 md:px-12 text-center space-y-6">
+                
+                <div class="inline-block px-3 py-1 bg-linen border border-hairline text-[10px] uppercase tracking-widest text-champagne font-semibold">
+                    Interactive Ritual Consultation
+                </div>
+
+                <h2 class="text-3xl md:text-5xl font-serif text-espresso font-light">
+                    Unsure which ritual your hair requires today?
+                </h2>
+                
+                <p class="text-sm md:text-base text-taupe max-w-2xl mx-auto font-light leading-relaxed">
+                    Answer three brief intuitive questions about your hair's current mood to discover your tailored treatment regimen.
+                </p>
+
+                <!-- Interactive Matcher Container -->
+                <div class="mt-8 bg-linen/60 border border-hairline p-8 md:p-12 text-left space-y-8">
+                    
+                    <!-- Progress steps -->
+                    <div class="flex items-center justify-between text-xs uppercase tracking-widest text-taupe border-b border-hairline pb-4">
+                        <span id="quizStepIndicator">Step 1 of 3 &bull; Hair State</span>
+                        <span class="text-champagne font-medium">Sensory Matcher</span>
+                    </div>
+
+                    <!-- Step 1: Hair Condition -->
+                    <div id="quizStep1" class="space-y-4">
+                        <h3 class="text-lg font-serif text-espresso">How does your scalp and hair currently feel?</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <button onclick="selectQuizOption('dry')" class="quiz-btn-1 border border-hairline bg-alabaster p-5 text-left hover:border-champagne transition-silk group">
+                                <p class="text-xs uppercase tracking-wider text-espresso font-medium group-hover:text-champagne">Dehydrated & Overworked</p>
+                                <p class="text-[11px] text-taupe mt-1">Needs deep moisture restoration & gloss.</p>
+                            </button>
+                            <button onclick="selectQuizOption('scalp')" class="quiz-btn-1 border border-hairline bg-alabaster p-5 text-left hover:border-champagne transition-silk group">
+                                <p class="text-xs uppercase tracking-wider text-espresso font-medium group-hover:text-champagne">Scalp Tension & Fatigue</p>
+                                <p class="text-[11px] text-taupe mt-1">Needs botanical head spa & lymphatic massage.</p>
+                            </button>
+                            <button onclick="selectQuizOption('color')" class="quiz-btn-1 border border-hairline bg-alabaster p-5 text-left hover:border-champagne transition-silk group">
+                                <p class="text-xs uppercase tracking-wider text-espresso font-medium group-hover:text-champagne">Faded & Dull Tone</p>
+                                <p class="text-[11px] text-taupe mt-1">Needs dimensional sun-lit refresh & shine treatment.</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Time Available (Hidden by default) -->
+                    <div id="quizStep2" class="hidden space-y-4">
+                        <h3 class="text-lg font-serif text-espresso">How much time do you wish to spend in sanctuary?</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <button onclick="finishQuiz('express')" class="border border-hairline bg-alabaster p-5 text-left hover:border-champagne transition-silk group">
+                                <p class="text-xs uppercase tracking-wider text-espresso font-medium group-hover:text-champagne">60 Minutes &bull; Express</p>
+                                <p class="text-[11px] text-taupe mt-1">Focused, efficient restorative ritual.</p>
+                            </button>
+                            <button onclick="finishQuiz('signature')" class="border border-hairline bg-alabaster p-5 text-left hover:border-champagne transition-silk group">
+                                <p class="text-xs uppercase tracking-wider text-espresso font-medium group-hover:text-champagne">90–120 Minutes &bull; Signature</p>
+                                <p class="text-[11px] text-taupe mt-1">Complete sculpt, steam & tailored styling.</p>
+                            </button>
+                            <button onclick="finishQuiz('immersion')" class="border border-hairline bg-alabaster p-5 text-left hover:border-champagne transition-silk group">
+                                <p class="text-xs uppercase tracking-wider text-espresso font-medium group-hover:text-champagne">3+ Hours &bull; Full Immersion</p>
+                                <p class="text-[11px] text-taupe mt-1">Color architecture & head spa ritual combined.</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Result (Hidden by default) -->
+                    <div id="quizResult" class="hidden space-y-6 pt-2">
+                        <div class="p-6 bg-alabaster border border-champagne/40 space-y-3">
+                            <span class="text-[10px] uppercase tracking-ultra-wide text-champagne font-semibold">Recommended Match</span>
+                            <h4 id="resultTitle" class="text-2xl font-serif text-espresso">Botanical Head Spa & Camellia Steam Ritual</h4>
+                            <p id="resultDesc" class="text-xs text-taupe leading-relaxed">
+                                Designed specifically to relieve deep scalp tension, restore hair fiber lipid balance, and promote quiet restorative wellness.
+                            </p>
+                            <div class="flex items-center justify-between pt-4 border-t border-hairline">
+                                <div>
+                                    <span class="text-xs text-taupe">Estimated Time: </span>
+                                    <span id="resultTime" class="text-xs text-espresso font-medium">90 Mins</span>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-taupe">Investment: </span>
+                                    <span id="resultPrice" class="text-xs text-espresso font-medium">£185</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                            <button id="resultBookBtn" onclick="openBookingDrawerWithPreselect()" class="px-6 py-3 bg-espresso text-alabaster text-xs uppercase tracking-widest font-medium hover:bg-champagne transition-silk text-center">
+                                Reserve Recommended Ritual
+                            </button>
+                            <button onclick="resetQuiz()" class="px-6 py-3 border border-hairline text-espresso text-xs uppercase tracking-widest font-medium hover:border-champagne transition-silk">
+                                Reset Consultation
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CURATED SERVICE & RITUAL MENU (INTERACTIVE CATEGORY TABS) -->
+        <section id="menu" class="py-24 border-b border-hairline bg-linen/30">
+            <div class="max-w-6xl mx-auto px-6 md:px-12">
+                
+                <!-- Section Header -->
+                <div class="text-center space-y-4 mb-16">
+                    <span class="text-xs tracking-widest uppercase text-champagne font-semibold">Menu & Offerings</span>
+                    <h2 class="text-3xl md:text-5xl font-serif text-espresso font-light">
+                        Curated Hair & Scalp Rituals
+                    </h2>
+                    <p class="text-sm text-taupe max-w-xl mx-auto font-light">
+                        All services include complimentary organic botanical elixir, quiet atmosphere preference, and tailored sensory aromatherapeutics.
+                    </p>
+                </div>
+
+                <!-- Category Tabs -->
+                <div class="flex justify-center border-b border-hairline mb-12 overflow-x-auto space-x-8 text-xs uppercase tracking-widest font-medium">
+                    <button onclick="switchTab('cut')" id="tab-cut" class="menu-tab py-4 border-b-2 border-champagne text-espresso transition-silk whitespace-nowrap">
+                        01. Cut & Architectural Sculpt
+                    </button>
+                    <button onclick="switchTab('color')" id="tab-color" class="menu-tab py-4 border-b-2 border-transparent text-taupe hover:text-espresso transition-silk whitespace-nowrap">
+                        02. Dimensional Color & Gloss
+                    </button>
+                    <button onclick="switchTab('spa')" id="tab-spa" class="menu-tab py-4 border-b-2 border-transparent text-taupe hover:text-espresso transition-silk whitespace-nowrap">
+                        03. Botanical Head Spa
+                    </button>
+                </div>
+
+                <!-- Menu Tab Content Containers -->
+
+                <!-- TAB 1: CUT & SCULPT -->
+                <div id="content-cut" class="menu-content space-y-8">
+                    
+                    <!-- Item 1 -->
+                    <div class="group border-b border-hairline pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="space-y-1 max-w-2xl">
+                            <div class="flex items-center space-x-3">
+                                <h3 class="text-xl font-serif text-espresso group-hover:text-champagne transition-colors">Signature Dry Sculpt & Restyle</h3>
+                                <span class="text-[10px] uppercase tracking-widest px-2 py-0.5 bg-linen border border-hairline text-taupe">75 Mins</span>
+                            </div>
+                            <p class="text-xs text-taupe leading-relaxed">
+                                Tailored organic dry cut designed around natural hair growth patterns, texture mapping, and bone structure. Includes botanical shampoo and custom blowout.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between md:justify-end space-x-6">
+                            <span class="text-lg font-serif text-espresso">£145</span>
+                            <button onclick="openBookingDrawer('Signature Dry Sculpt & Restyle')" class="px-4 py-2 border border-hairline text-[11px] uppercase tracking-widest text-espresso hover:bg-espresso hover:text-alabaster hover:border-espresso transition-silk font-medium">
+                                + Select
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="group border-b border-hairline pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="space-y-1 max-w-2xl">
+                            <div class="flex items-center space-x-3">
+                                <h3 class="text-xl font-serif text-espresso group-hover:text-champagne transition-colors">Editorial Transformation Sculpt</h3>
+                                <span class="text-[10px] uppercase tracking-widest px-2 py-0.5 bg-linen border border-hairline text-taupe">105 Mins</span>
+                            </div>
+                            <p class="text-xs text-taupe leading-relaxed">
+                                Complete shape reimagining from long to architectural short crop or textured bob. Includes preliminary strand analysis and scalp detox rinse.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between md:justify-end space-x-6">
+                            <span class="text-lg font-serif text-espresso">£190</span>
+                            <button onclick="openBookingDrawer('Editorial Transformation Sculpt')" class="px-4 py-2 border border-hairline text-[11px] uppercase tracking-widest text-espresso hover:bg-espresso hover:text-alabaster hover:border-espresso transition-silk font-medium">
+                                + Select
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="group border-b border-hairline pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="space-y-1 max-w-2xl">
+                            <div class="flex items-center space-x-3">
+                                <h3 class="text-xl font-serif text-espresso group-hover:text-champagne transition-colors">Fringe & Silhouette Maintenance</h3>
+                                <span class="text-[10px] uppercase tracking-widest px-2 py-0.5 bg-linen border border-hairline text-taupe">35 Mins</span>
+                            </div>
+                            <p class="text-xs text-taupe leading-relaxed">
+                                Precision touch-up for existing face-framing layers and fringe between major restyling appointments.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between md:justify-end space-x-6">
+                            <span class="text-lg font-serif text-espresso">£65</span>
+                            <button onclick="openBookingDrawer('Fringe & Silhouette Maintenance')" class="px-4 py-2 border border-hairline text-[11px] uppercase tracking-widest text-espresso hover:bg-espresso hover:text-alabaster hover:border-espresso transition-silk font-medium">
+                                + Select
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- TAB 2: DIMENSIONAL COLOR (Hidden initially) -->
+                <div id="content-color" class="menu-content hidden space-y-8">
+                    
+                    <!-- Item 1 -->
+                    <div class="group border-b border-hairline pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="space-y-1 max-w-2xl">
+                            <div class="flex items-center space-x-3">
+                                <h3 class="text-xl font-serif text-espresso group-hover:text-champagne transition-colors">Sun-Lit Organic Balayage</h3>
+                                <span class="text-[10px] uppercase tracking-widest px-2 py-0.5 bg-linen border border-hairline text-taupe">180 Mins</span>
+                            </div>
+                            <p class="text-xs text-taupe leading-relaxed">
+                                Hand-painted seamless dimension utilizing clay-based lighteners enriched with amino acid bond rebuilders. Seamless, low-maintenance grow-out.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between md:justify-end space-x-6">
+                            <span class="text-lg font-serif text-espresso">£285</span>
+                            <button onclick="openBookingDrawer('Sun-Lit Organic Balayage')" class="px-4 py-2 border border-hairline text-[11px] uppercase tracking-widest text-espresso hover:bg-espresso hover:text-alabaster hover:border-espresso transition-silk font-medium">
+                                + Select
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="group border-b border-hairline pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="space-y-1 max-w-2xl">
+                            <div class="flex items-center space-x-3">
+                                <h3 class="text-xl font-serif text-espresso group-hover:text-champagne transition-colors">Cashmere Root Tint & Velvet Gloss</h3>
+                                <span class="text-[10px] uppercase tracking-widest px-2 py-0.5 bg-linen border border-hairline text-taupe">120 Mins</span>
+                            </div>
+                            <p class="text-xs text-taupe leading-relaxed">
+                                Ammonia-free root coverage infused with organic argan and camellia extracts, followed by a customized tonal gloss for reflective luster.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between md:justify-end space-x-6">
+                            <span class="text-lg font-serif text-espresso">£195</span>
+                            <button onclick="openBookingDrawer('Cashmere Root Tint & Velvet Gloss')" class="px-4 py-2 border border-hairline text-[11px] uppercase tracking-widest text-espresso hover:bg-espresso hover:text-alabaster hover:border-espresso transition-silk font-medium">
+                                + Select
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="group border-b border-hairline pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="space-y-1 max-w-2xl">
+                            <div class="flex items-center space-x-3">
+                                <h3 class="text-xl font-serif text-espresso group-hover:text-champagne transition-colors">Corrective Color & Tone Restoration</h3>
+                                <span class="text-[10px] uppercase tracking-widest px-2 py-0.5 bg-linen border border-hairline text-taupe">240 Mins</span>
+                            </div>
+                            <p class="text-xs text-taupe leading-relaxed">
+                                Delicate multi-phase color repair for uneven, compromised tones. Includes restorative protein therapy and intensive home-care formula.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between md:justify-end space-x-6">
+                            <span class="text-lg font-serif text-espresso">£380</span>
+                            <button onclick="openBookingDrawer('Corrective Color Restoration')" class="px-4 py-2 border border-hairline text-[11px] uppercase tracking-widest text-espresso hover:bg-espresso hover:text-alabaster hover:border-espresso transition-silk font-medium">
+                                + Select
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- TAB 3: BOTANICAL HEAD SPA (Hidden initially) -->
+                <div id="content-spa" class="menu-content hidden space-y-8">
+                    
+                    <!-- Item 1 -->
+                    <div class="group border-b border-hairline pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="space-y-1 max-w-2xl">
+                            <div class="flex items-center space-x-3">
+                                <h3 class="text-xl font-serif text-espresso group-hover:text-champagne transition-colors">Camellia Scalp Detox & Aromatherapy Steam</h3>
+                                <span class="text-[10px] uppercase tracking-widest px-2 py-0.5 bg-linen border border-hairline text-taupe">90 Mins</span>
+                            </div>
+                            <p class="text-xs text-taupe leading-relaxed">
+                                Micro-exfoliating scalp scrub, warm herbal steam circulation, acupressure neck massage, and custom scalp microbiome tonic.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between md:justify-end space-x-6">
+                            <span class="text-lg font-serif text-espresso">£175</span>
+                            <button onclick="openBookingDrawer('Camellia Scalp Detox Spa')" class="px-4 py-2 border border-hairline text-[11px] uppercase tracking-widest text-espresso hover:bg-espresso hover:text-alabaster hover:border-espresso transition-silk font-medium">
+                                + Select
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="group border-b border-hairline pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="space-y-1 max-w-2xl">
+                            <div class="flex items-center space-x-3">
+                                <h3 class="text-xl font-serif text-espresso group-hover:text-champagne transition-colors">Pure Silk Keratin & Gua Sha Infusion</h3>
+                                <span class="text-[10px] uppercase tracking-widest px-2 py-0.5 bg-linen border border-hairline text-taupe">105 Mins</span>
+                            </div>
+                            <p class="text-xs text-taupe leading-relaxed">
+                                Cold-pressed botanical keratin seal infused with jade stone scalp Gua Sha to relieve tension and stimulate vascular hair follicle vitality.
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between md:justify-end space-x-6">
+                            <span class="text-lg font-serif text-espresso">£210</span>
+                            <button onclick="openBookingDrawer('Pure Silk Keratin Spa')" class="px-4 py-2 border border-hairline text-[11px] uppercase tracking-widest text-espresso hover:bg-espresso hover:text-alabaster hover:border-espresso transition-silk font-medium">
+                                + Select
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- MASTER ARTISANS (STYLIST SHOWCASE) -->
+        <section id="artisans" class="py-24 border-b border-hairline bg-alabaster">
+            <div class="max-w-7xl mx-auto px-6 md:px-12">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div class="space-y-3 max-w-xl">
+                        <span class="text-xs tracking-widest uppercase text-champagne font-semibold">Craftsmanship</span>
+                        <h2 class="text-3xl md:text-5xl font-serif text-espresso font-light">
+                            Master Artisans
+                        </h2>
+                        <p class="text-sm text-taupe font-light">
+                            Each stylist operates as an independent artisan in dedicated private suites, mastering specific hair disciplines.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    
+                    <!-- Artisan 1 -->
+                    <div class="group space-y-5">
+                        <div class="relative overflow-hidden aspect-[3/4] bg-linen border border-hairline">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800" 
+                                 alt="Solène Moreau" 
+                                 class="w-full h-full object-cover grayscale opacity-95 group-hover:grayscale-0 group-hover:scale-105 transition-silk duration-700"
+                                 onerror="this.src='https://placehold.co/600x800/EFEAE1/1C1917?text=Solène+Moreau';">
+                            <div class="absolute inset-0 bg-gradient-to-t from-espresso/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-silk flex items-end p-6">
+                                <span class="text-xs uppercase tracking-widest text-alabaster font-medium">14 Years Experience &bull; Paris & London</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-2xl font-serif text-espresso">Solène Moreau</h3>
+                                <span class="text-[10px] uppercase tracking-widest text-champagne font-semibold">Founder</span>
+                            </div>
+                            <p class="text-xs text-taupe">Specialty: Architectural Dry Sculpting & Organic Balayage</p>
+                        </div>
+
+                        <button onclick="openBookingDrawerWithArtisan('Solène Moreau')" class="text-xs uppercase tracking-widest text-espresso font-medium hover:text-champagne hover-underline-glide inline-block pt-1">
+                            Book Suite with Solène &rarr;
+                        </button>
+                    </div>
+
+                    <!-- Artisan 2 -->
+                    <div class="group space-y-5">
+                        <div class="relative overflow-hidden aspect-[3/4] bg-linen border border-hairline">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" 
+                                 alt="Julien Vance" 
+                                 class="w-full h-full object-cover grayscale opacity-95 group-hover:grayscale-0 group-hover:scale-105 transition-silk duration-700"
+                                 onerror="this.src='https://placehold.co/600x800/EFEAE1/1C1917?text=Julien+Vance';">
+                            <div class="absolute inset-0 bg-gradient-to-t from-espresso/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-silk flex items-end p-6">
+                                <span class="text-xs uppercase tracking-widest text-alabaster font-medium">11 Years Experience &bull; Editorial & Session</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-2xl font-serif text-espresso">Julien Vance</h3>
+                                <span class="text-[10px] uppercase tracking-widest text-champagne font-semibold">Master Colorist</span>
+                            </div>
+                            <p class="text-xs text-taupe">Specialty: Precision Tone Correction & Sun-Lit Highlights</p>
+                        </div>
+
+                        <button onclick="openBookingDrawerWithArtisan('Julien Vance')" class="text-xs uppercase tracking-widest text-espresso font-medium hover:text-champagne hover-underline-glide inline-block pt-1">
+                            Book Suite with Julien &rarr;
+                        </button>
+                    </div>
+
+                    <!-- Artisan 3 -->
+                    <div class="group space-y-5">
+                        <div class="relative overflow-hidden aspect-[3/4] bg-linen border border-hairline">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" 
+                                 alt="Elena Rostova" 
+                                 class="w-full h-full object-cover grayscale opacity-95 group-hover:grayscale-0 group-hover:scale-105 transition-silk duration-700"
+                                 onerror="this.src='https://placehold.co/600x800/EFEAE1/1C1917?text=Elena+Rostova';">
+                            <div class="absolute inset-0 bg-gradient-to-t from-espresso/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-silk flex items-end p-6">
+                                <span class="text-xs uppercase tracking-widest text-alabaster font-medium">9 Years Experience &bull; Scalp Therapist</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-2xl font-serif text-espresso">Elena Rostova</h3>
+                                <span class="text-[10px] uppercase tracking-widest text-champagne font-semibold">Head Spa Director</span>
+                            </div>
+                            <p class="text-xs text-taupe">Specialty: Botanical Scalp Spa & Gua Sha Restorative Therapy</p>
+                        </div>
+
+                        <button onclick="openBookingDrawerWithArtisan('Elena Rostova')" class="text-xs uppercase tracking-widest text-espresso font-medium hover:text-champagne hover-underline-glide inline-block pt-1">
+                            Book Suite with Elena &rarr;
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CLIENT JOURNAL & REFLECTIONS (EDITORIAL TESTIMONIALS) -->
+        <section id="journal" class="py-24 border-b border-hairline bg-linen/40">
+            <div class="max-w-6xl mx-auto px-6 md:px-12">
+                
+                <div class="text-center space-y-3 mb-16">
+                    <span class="text-xs tracking-widest uppercase text-champagne font-semibold">Quiet Reflections</span>
+                    <h2 class="text-3xl md:text-4xl font-serif text-espresso font-light italic">
+                        Notes from Guest Journal
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Reflection 1 -->
+                    <div class="bg-alabaster p-8 border border-hairline space-y-4 relative flex flex-col justify-between">
+                        <p class="text-sm font-serif italic text-espresso leading-relaxed">
+                            "Finding a salon that respects quiet solitude without awkward forced small talk is rare. Solène's private suite feels like a hidden museum gallery."
+                        </p>
+                        <div class="pt-4 border-t border-hairline flex items-center justify-between text-xs">
+                            <span class="font-medium text-espresso uppercase tracking-wider">Lady Clara H.</span>
+                            <span class="text-[10px] text-taupe uppercase">Dry Sculpt Guest</span>
+                        </div>
+                    </div>
+
+                    <!-- Reflection 2 -->
+                    <div class="bg-alabaster p-8 border border-hairline space-y-4 relative flex flex-col justify-between">
+                        <p class="text-sm font-serif italic text-espresso leading-relaxed">
+                            "The Botanical Head Spa transformed my chronic tension headache within 20 minutes. The warm herbal steam and jade stone work are divine."
+                        </p>
+                        <div class="pt-4 border-t border-hairline flex items-center justify-between text-xs">
+                            <span class="font-medium text-espresso uppercase tracking-wider">Dr. Aris Thorne</span>
+                            <span class="text-[10px] text-taupe uppercase">Head Spa Ritual</span>
+                        </div>
+                    </div>
+
+                    <!-- Reflection 3 -->
+                    <div class="bg-alabaster p-8 border border-hairline space-y-4 relative flex flex-col justify-between">
+                        <p class="text-sm font-serif italic text-espresso leading-relaxed">
+                            "My balayage grew out for six months seamlessly without any harsh line of demarcation. Truly master-level color chemistry."
+                        </p>
+                        <div class="pt-4 border-t border-hairline flex items-center justify-between text-xs">
+                            <span class="font-medium text-espresso uppercase tracking-wider">V. Montgomery</span>
+                            <span class="text-[10px] text-taupe uppercase">Balayage Guest</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- COMPACT ARCHITECTURAL FOOTER -->
+    <footer class="bg-espresso text-alabaster pt-16 pb-12 border-t border-hairline-dark">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-hairline-dark">
+                
+                <!-- Col 1: Brand & Tagline -->
+                <div class="md:col-span-5 space-y-4">
+                    <span class="text-2xl font-serif tracking-widest uppercase text-alabaster">MAISON SOLÈNE</span>
+                    <p class="text-xs text-taupe max-w-sm leading-relaxed">
+                        A private hair sanctuary dedicated to botanical organic formulations, unhurried appointments, and calm sensory restoration.
+                    </p>
+                </div>
+
+                <!-- Col 2: Location & Hours -->
+                <div class="md:col-span-4 space-y-2 text-xs text-taupe">
+                    <p class="uppercase tracking-widest text-champagne font-semibold mb-2">Sanctuary Address</p>
+                    <p class="text-alabaster">No. 42 Rue de L'Orangerie, Mayfair, London</p>
+                    <p>Tuesday – Saturday &bull; 09:00 – 19:00</p>
+                    <p>Sunday & Monday &bull; Closed for Botanicals Formulating</p>
+                </div>
+
+                <!-- Col 3: Direct Contact -->
+                <div class="md:col-span-3 space-y-2 text-xs text-taupe">
+                    <p class="uppercase tracking-widest text-champagne font-semibold mb-2">Private Concierge</p>
+                    <p class="text-alabaster">+44 (0) 20 7946 0912</p>
+                    <p>concierge@maisonsolene.com</p>
+                    <div class="pt-2 flex space-x-4">
+                        <a href="#" class="hover:text-champagne transition-colors">Instagram</a>
+                        <a href="#" class="hover:text-champagne transition-colors">Editorial Journal</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Colophon -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-taupe space-y-4 sm:space-y-0">
+                <p>&copy; 2026 MAISON SOLÈNE &bull; All Rights Reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" onclick="alert('Maison Solène prioritizes guest privacy. All appointments are strictly confidential.')" class="hover:text-alabaster">Privacy Notice</a>
+                    <a href="#" onclick="alert('Terms: 24-hour appointment rescheduling policy applies for private suite bookings.')" class="hover:text-alabaster">Suite Terms</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SLIDE-OVER PRIVATE BOOKING DRAWER MODAL -->
+    <div id="bookingDrawer" class="fixed inset-0 z-50 hidden overflow-hidden">
+        <!-- Backdrop -->
+        <div onclick="closeBookingDrawer()" class="absolute inset-0 drawer-backdrop transition-opacity"></div>
+
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-alabaster border-l border-hairline shadow-2xl flex flex-col justify-between">
+                
+                <!-- Drawer Header -->
+                <div class="p-6 md:p-8 border-b border-hairline flex items-center justify-between bg-linen">
+                    <div>
+                        <span class="text-[10px] uppercase tracking-widest text-champagne font-semibold">Private Chair Reservation</span>
+                        <h3 class="text-xl font-serif text-espresso">Maison Solène</h3>
+                    </div>
+                    <button onclick="closeBookingDrawer()" class="p-2 text-taupe hover:text-espresso transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+
+                <!-- Drawer Content Form -->
+                <div class="p-6 md:p-8 overflow-y-auto space-y-6 flex-1">
+                    
+                    <!-- Form Step 1: Selected Ritual -->
+                    <div class="space-y-2">
+                        <label class="text-xs uppercase tracking-widest text-espresso font-medium block">1. Selected Ritual / Service</label>
+                        <select id="bookingService" class="w-full bg-alabaster border border-hairline p-3 text-xs text-espresso focus:outline-none focus:border-champagne">
+                            <option value="Signature Dry Sculpt & Restyle">Signature Dry Sculpt & Restyle (£145)</option>
+                            <option value="Editorial Transformation Sculpt">Editorial Transformation Sculpt (£190)</option>
+                            <option value="Sun-Lit Organic Balayage">Sun-Lit Organic Balayage (£285)</option>
+                            <option value="Cashmere Root Tint & Velvet Gloss">Cashmere Root Tint & Velvet Gloss (£195)</option>
+                            <option value="Camellia Scalp Detox Spa">Camellia Scalp Detox Spa (£175)</option>
+                            <option value="Pure Silk Keratin Spa">Pure Silk Keratin Spa (£210)</option>
+                        </select>
+                    </div>
+
+                    <!-- Form Step 2: Preferred Artisan -->
+                    <div class="space-y-2">
+                        <label class="text-xs uppercase tracking-widest text-espresso font-medium block">2. Master Artisan</label>
+                        <select id="bookingArtisan" class="w-full bg-alabaster border border-hairline p-3 text-xs text-espresso focus:outline-none focus:border-champagne">
+                            <option value="Solène Moreau (Founder & Director)">Solène Moreau (Founder & Creative Director)</option>
+                            <option value="Julien Vance (Master Colorist)">Julien Vance (Master Colorist)</option>
+                            <option value="Elena Rostova (Head Spa Director)">Elena Rostova (Head Spa Director)</option>
+                            <option value="First Available Artisan">First Available Artisan</option>
+                        </select>
+                    </div>
+
+                    <!-- Form Step 3: Date & Time Picker -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="text-xs uppercase tracking-widest text-espresso font-medium block">Preferred Date</label>
+                            <input type="date" id="bookingDate" class="w-full bg-alabaster border border-hairline p-3 text-xs text-espresso focus:outline-none focus:border-champagne">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs uppercase tracking-widest text-espresso font-medium block">Time Slot</label>
+                            <select id="bookingTime" class="w-full bg-alabaster border border-hairline p-3 text-xs text-espresso focus:outline-none focus:border-champagne">
+                                <option value="09:30 AM">09:30 AM (Quiet Morning)</option>
+                                <option value="12:00 PM">12:00 PM (Midday)</option>
+                                <option value="03:30 PM">03:30 PM (Afternoon)</option>
+                                <option value="05:30 PM">05:30 PM (Evening)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Form Step 4: Tactile & Quiet Preferences -->
+                    <div class="p-4 bg-linen border border-hairline space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs uppercase tracking-wider text-espresso font-medium">Quiet Appointment</p>
+                                <p class="text-[11px] text-taupe">Minimal conversation after initial consultation.</p>
+                            </div>
+                            <input type="checkbox" id="quietToggle" class="accent-champagne w-4 h-4">
+                        </div>
+
+                        <div class="border-t border-hairline pt-3 space-y-2">
+                            <label class="text-[11px] uppercase tracking-wider text-espresso font-medium block">Complimentary Botanical Tea</label>
+                            <select id="teaPreference" class="w-full bg-alabaster border border-hairline p-2 text-xs text-espresso focus:outline-none">
+                                <option value="Jasmine Silver Needle White Tea">Jasmine Silver Needle White Tea</option>
+                                <option value="Wild Organic Chamomile & Lavender">Wild Organic Chamomile & Lavender</option>
+                                <option value="Rose Petal & White Peach Elixir">Rose Petal & White Peach Elixir</option>
+                                <option value="Sparkling Botanical Mineral Water">Sparkling Botanical Mineral Water</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Guest Details -->
+                    <div class="space-y-3 pt-2">
+                        <label class="text-xs uppercase tracking-widest text-espresso font-medium block">3. Guest Information</label>
+                        <input type="text" id="guestName" placeholder="Full Name" class="w-full bg-alabaster border border-hairline p-3 text-xs text-espresso focus:outline-none focus:border-champagne">
+                        <input type="email" id="guestEmail" placeholder="Email Address" class="w-full bg-alabaster border border-hairline p-3 text-xs text-espresso focus:outline-none focus:border-champagne">
+                        <input type="tel" id="guestPhone" placeholder="Mobile Phone Number" class="w-full bg-alabaster border border-hairline p-3 text-xs text-espresso focus:outline-none focus:border-champagne">
+                    </div>
+
+                </div>
+
+                <!-- Drawer Footer Actions -->
+                <div class="p-6 border-t border-hairline bg-linen space-y-3">
+                    <button onclick="confirmBooking()" class="w-full py-4 bg-espresso text-alabaster text-xs uppercase tracking-widest font-medium hover:bg-champagne transition-silk">
+                        Confirm Chair Reservation
+                    </button>
+                    <p class="text-[10px] text-center text-taupe">No payment required now. Cancellations accepted up to 24 hours prior.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- BOOKING SUCCESS CONFIRMATION MODAL -->
+    <div id="confirmModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div onclick="closeConfirmModal()" class="absolute inset-0 drawer-backdrop"></div>
+        <div class="relative bg-alabaster border border-hairline p-8 md:p-12 max-w-lg w-full text-center space-y-6 shadow-2xl z-10">
+            <div class="w-12 h-12 rounded-full bg-linen border border-hairline flex items-center justify-center mx-auto text-champagne">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            </div>
+            <div class="space-y-2">
+                <span class="text-[10px] uppercase tracking-ultra-wide text-champagne font-semibold">Reservation Confirmed</span>
+                <h3 class="text-3xl font-serif text-espresso">We await your arrival.</h3>
+                <p id="confirmSummary" class="text-xs text-taupe leading-relaxed pt-2">
+                    A invitation note and calendar confirmation have been prepared for your suite appointment.
+                </p>
+            </div>
+            <div class="p-4 bg-linen border border-hairline text-left text-xs space-y-1.5 font-mono text-taupe">
+                <p><span class="text-espresso font-sans">Reference:</span> <span id="confRef">#SOL-8942</span></p>
+                <p><span class="text-espresso font-sans">Guest:</span> <span id="confGuestName">Valued Guest</span></p>
+                <p><span class="text-espresso font-sans">Ritual:</span> <span id="confRitual">Signature Dry Sculpt</span></p>
+                <p><span class="text-espresso font-sans">Artisan:</span> <span id="confArtisan">Solène Moreau</span></p>
+            </div>
+            <button onclick="closeConfirmModal()" class="w-full py-3 bg-espresso text-alabaster text-xs uppercase tracking-widest font-medium hover:bg-champagne transition-silk">
+                Return to Sanctuary
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Set Default Booking Date to Tomorrow
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date();
+            today.setDate(today.getDate() + 1);
+            const dateStr = today.toISOString().split('T')[0];
+            const dateInput = document.getElementById('bookingDate');
+            if (dateInput) dateInput.value = dateStr;
+        });
+
+        // Mobile Nav Toggle
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('hidden');
+        }
+
+        // Category Menu Tabs Switching
+        function switchTab(category) {
+            // Hide all tab content
+            document.querySelectorAll('.menu-content').forEach(el => el.classList.add('hidden'));
+            
+            // Deactivate tab buttons
+            document.querySelectorAll('.menu-tab').forEach(btn => {
+                btn.classList.remove('border-champagne', 'text-espresso');
+                btn.classList.add('border-transparent', 'text-taupe');
+            });
+
+            // Activate chosen tab
+            document.getElementById(`content-${category}`).classList.remove('hidden');
+            const activeTab = document.getElementById(`tab-${category}`);
+            activeTab.classList.remove('border-transparent', 'text-taupe');
+            activeTab.classList.add('border-champagne', 'text-espresso');
+        }
+
+        // Booking Drawer Controls
+        function openBookingDrawer(preselectService = null) {
+            const drawer = document.getElementById('bookingDrawer');
+            if (preselectService) {
+                const select = document.getElementById('bookingService');
+                for (let i = 0; i < select.options.length; i++) {
+                    if (select.options[i].value.includes(preselectService)) {
+                        select.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+            drawer.classList.remove('hidden');
+        }
+
+        function openBookingDrawerWithArtisan(artisanName) {
+            openBookingDrawer();
+            const select = document.getElementById('bookingArtisan');
+            for (let i = 0; i < select.options.length; i++) {
+                if (select.options[i].value.includes(artisanName)) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        function closeBookingDrawer() {
+            document.getElementById('bookingDrawer').classList.add('hidden');
+        }
+
+        // Interactive Quiz Logic
+        let quizState = {};
+
+        function selectQuizOption(condition) {
+            quizState.condition = condition;
+            document.getElementById('quizStep1').classList.add('hidden');
+            document.getElementById('quizStep2').classList.remove('hidden');
+            document.getElementById('quizStepIndicator').innerText = "Step 2 of 3 • Time Allocation";
+        }
+
+        function finishQuiz(duration) {
+            quizState.duration = duration;
+            document.getElementById('quizStep2').classList.add('hidden');
+            document.getElementById('quizResult').classList.remove('hidden');
+            document.getElementById('quizStepIndicator').innerText = "Consultation Complete • Recommendation Ready";
+
+            // Determine Recommendation
+            const title = document.getElementById('resultTitle');
+            const desc = document.getElementById('resultDesc');
+            const time = document.getElementById('resultTime');
+            const price = document.getElementById('resultPrice');
+
+            if (quizState.condition === 'scalp') {
+                title.innerText = "Camellia Scalp Detox & Aromatherapy Steam";
+                desc.innerText = "Micro-exfoliating scalp treatment designed to release tension, stimulate vascular health, and deeply purify follicles.";
+                time.innerText = "90 Mins";
+                price.innerText = "£175";
+                quizState.recommendedName = "Camellia Scalp Detox Spa";
+            } else if (quizState.condition === 'color') {
+                title.innerText = "Sun-Lit Organic Balayage & Tonal Gloss";
+                desc.innerText = "Bespoke hand-painted dimensional highlights paired with nourishing botanical gloss to restore luminous hair texture.";
+                time.innerText = "180 Mins";
+                price.innerText = "£285";
+                quizState.recommendedName = "Sun-Lit Organic Balayage";
+            } else {
+                title.innerText = "Signature Dry Sculpt & Silk Keratin Infusion";
+                desc.innerText = "Architectural dry sculpting aligned with natural hair fall, complemented by intensive moisture restoration.";
+                time.innerText = "105 Mins";
+                price.innerText = "£210";
+                quizState.recommendedName = "Signature Dry Sculpt & Restyle";
+            }
+        }
+
+        function resetQuiz() {
+            quizState = {};
+            document.getElementById('quizResult').classList.add('hidden');
+            document.getElementById('quizStep2').classList.add('hidden');
+            document.getElementById('quizStep1').classList.remove('hidden');
+            document.getElementById('quizStepIndicator').innerText = "Step 1 of 3 • Hair State";
+        }
+
+        function openConsultationModal() {
+            const element = document.getElementById('consultation');
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function openBookingDrawerWithPreselect() {
+            openBookingDrawer(quizState.recommendedName || 'Camellia Scalp Detox Spa');
+        }
+
+        // Confirmation Logic
+        function confirmBooking() {
+            const guestName = document.getElementById('guestName').value.trim() || 'Valued Guest';
+            const guestEmail = document.getElementById('guestEmail').value.trim();
+            const ritual = document.getElementById('bookingService').value;
+            const artisan = document.getElementById('bookingArtisan').value;
+
+            if (!guestEmail) {
+                alert('Please provide an email address for your private suite confirmation note.');
+                return;
+            }
+
+            // Fill confirmation details
+            document.getElementById('confRef').innerText = '#SOL-' + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('confGuestName').innerText = guestName;
+            document.getElementById('confRitual').innerText = ritual;
+            document.getElementById('confArtisan').innerText = artisan;
+
+            closeBookingDrawer();
+            document.getElementById('confirmModal').classList.remove('hidden');
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirmModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

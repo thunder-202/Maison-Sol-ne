@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --color-alabaster: #F7F4EF;
+  --color-linen: #EFEAE1;
+  --color-espresso: #1C1917;
+  --color-taupe: #6E655F;
+  --color-champagne: #9E7B4F;
+  --color-champagne-light: #C5A375;
+  --color-hairline: #DCD4C8;
+  --color-hairline-dark: #443E38;
+
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --tracking-widest-editorial: 0.25em;
+  --tracking-ultra-wide: 0.35em;
+}
+
+@layer base {
+  html {
+    background-color: #F7F4EF;
+    color: #1C1917;
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #9E7B4F;
+    outline-offset: 2px;
+  }
+}
+
+.bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+.bg-buffer-hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(158, 123, 79, 0.08),
+    rgba(158, 123, 79, 0.08) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+.transition-silk {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-underline-glide {
+  position: relative;
+}
+
+.hover-underline-glide::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #9E7B4F;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-underline-glide:hover::after {
+  width: 100%;
+}
+
+.drawer-backdrop {
+  background-color: rgba(28, 25, 23, 0.45);
+  backdrop-filter: blur(4px);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F7F4EF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #DCD4C8;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9E7B4F;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .transition-silk,
+  .hover-underline-glide::after {
+    transition: none !important;
+  }
+}

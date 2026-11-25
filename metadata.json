@@ -1,0 +1,6 @@
+{
+  "name": "Maison Solène",
+  "description": "Bespoke Hair & Botanical Sanctuary featuring quiet luxury suites, sensory ritual matching, and a real-time dynamic scheduling engine.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
